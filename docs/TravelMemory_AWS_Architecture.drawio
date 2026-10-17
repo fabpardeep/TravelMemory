@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net" agent="M365 Copilot">
+  <diagram id="travelmemory-aws-architecture" name="TravelMemory AWS Architecture">
+    <mxGraphModel dx="1800" dy="1077" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#17365D;fontColor=#FFFFFF;strokeColor=#17365D;fontSize=23;align=center;verticalAlign=middle;" value="&lt;b&gt;TravelMemory - AWS Deployment Architecture&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:14px&quot;&gt;Region: us-east-1 | Two frontend instances | Two backend instances | Separate Application Load Balancers&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="1240" x="280" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="browser" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;" value="&lt;b&gt;User Browser&lt;/b&gt;&lt;br&gt;Public application access&lt;br&gt;HTTP :80" vertex="1">
+          <mxGeometry height="90" width="190" x="30" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="optional" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4D6;strokeColor=#C65911;fontSize=13;" value="&lt;b&gt;Cloudflare DNS / HTTPS&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#9C0006&quot;&gt;Optional - Not implemented&lt;/font&gt;&lt;br&gt;Application uses AWS ALB DNS names" vertex="1">
+          <mxGeometry height="115" width="240" x="30" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="aws" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#232F3E;strokeWidth=3;fontSize=18;verticalAlign=top;align=left;spacingTop=8;spacingLeft=12;" value="&lt;b&gt;AWS Cloud - us-east-1&lt;/b&gt;" vertex="1">
+          <mxGeometry height="825" width="1450" x="300" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="vpc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=2;fontSize=16;verticalAlign=top;align=left;spacingTop=8;spacingLeft=12;" value="&lt;b&gt;VPC / Default VPC&lt;/b&gt;" vertex="1">
+          <mxGeometry height="730" width="1390" x="330" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="az1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F8;strokeColor=#5B9BD5;dashed=1;fontSize=15;verticalAlign=top;align=center;spacingTop=8;" value="&lt;b&gt;Availability Zone 1&lt;/b&gt;&lt;br&gt;Public Subnet 1" vertex="1">
+          <mxGeometry height="500" width="500" x="520" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="az2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F8;strokeColor=#5B9BD5;dashed=1;fontSize=15;verticalAlign=top;align=center;spacingTop=8;" value="&lt;b&gt;Availability Zone 2&lt;/b&gt;&lt;br&gt;Public Subnet 2" vertex="1">
+          <mxGeometry height="500" width="500" x="1110" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="fealb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#6AA84F;strokeWidth=2;fontSize=15;" value="&lt;b&gt;Frontend Application Load Balancer&lt;/b&gt;&lt;br&gt;travelmemory-frontend-alb&lt;br&gt;Internet-facing | HTTP :80" vertex="1">
+          <mxGeometry height="90" width="1030" x="550" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="fetg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2F0D9;strokeColor=#70AD47;fontSize=12;" value="&lt;b&gt;Frontend Target Group&lt;/b&gt;&lt;br&gt;travelmemory-frontend-tg | Health check: GET / | Port 80" vertex="1">
+          <mxGeometry height="45" width="830" x="650" y="295" as="geometry" />
+        </mxCell>
+        <mxCell id="fe1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;" value="&lt;b&gt;travelmemory-frontend-1&lt;/b&gt;&lt;br&gt;Ubuntu EC2&lt;br&gt;Nginx :80&lt;br&gt;React production build" vertex="1">
+          <mxGeometry height="130" width="300" x="620" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="fe2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;" value="&lt;b&gt;travelmemory-frontend-2&lt;/b&gt;&lt;br&gt;Ubuntu EC2&lt;br&gt;Nginx :80&lt;br&gt;React production build" vertex="1">
+          <mxGeometry height="130" width="300" x="1210" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="bealb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D9EAD3;strokeColor=#6AA84F;strokeWidth=2;fontSize=15;" value="&lt;b&gt;Backend Application Load Balancer&lt;/b&gt;&lt;br&gt;travelmemory-backend-alb&lt;br&gt;Internet-facing | HTTP :80" vertex="1">
+          <mxGeometry height="90" width="1030" x="550" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="betg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2F0D9;strokeColor=#70AD47;fontSize=12;" value="&lt;b&gt;Backend Target Group&lt;/b&gt;&lt;br&gt;travelmemory-backend-tg | Health check: GET /hello | Port 80" vertex="1">
+          <mxGeometry height="45" width="830" x="650" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="be1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=14;" value="&lt;b&gt;travelmemory-backend-1&lt;/b&gt;&lt;br&gt;Ubuntu EC2&lt;br&gt;Nginx :80 → Node.js :3000&lt;br&gt;systemd service" vertex="1">
+          <mxGeometry height="130" width="300" x="620" y="745" as="geometry" />
+        </mxCell>
+        <mxCell id="be2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=14;" value="&lt;b&gt;travelmemory-backend-2&lt;/b&gt;&lt;br&gt;Ubuntu EC2&lt;br&gt;Nginx :80 → Node.js :3000&lt;br&gt;systemd service" vertex="1">
+          <mxGeometry height="130" width="300" x="1210" y="745" as="geometry" />
+        </mxCell>
+        <mxCell id="atlas" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;" value="&lt;b&gt;MongoDB Atlas&lt;/b&gt;&lt;br&gt;Cluster: TravelMemoryCluster&lt;br&gt;Database: travelmemory&lt;br&gt;Database user: travelmemory_app&lt;br&gt;TLS-encrypted connection" vertex="1">
+          <mxGeometry height="150" width="260" x="35" y="665" as="geometry" />
+        </mxCell>
+        <mxCell id="sg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#6B7280;fontSize=12;align=left;spacingLeft=10;" value="&lt;b&gt;Security Group Communication&lt;/b&gt;&lt;br&gt;Internet → ALBs: HTTP 80&lt;br&gt;Frontend ALB SG → Frontend EC2 SG: 80&lt;br&gt;Backend ALB SG → Backend EC2 SG: 80&lt;br&gt;Administrator IP → EC2: SSH 22&lt;br&gt;Node.js :3000 is not public" vertex="1">
+          <mxGeometry height="175" width="265" x="30" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="browser" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#334155;" target="fealb" value="HTTP :80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="fealb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#334155;" target="fe1" value="Healthy target :80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="fealb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#334155;" target="fe2" value="Healthy target :80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="fe1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#334155;" target="bealb" value="API requests to backend ALB">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="fe2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#334155;" target="bealb" value="API requests to backend ALB">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="bealb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#334155;" target="be1" value="Healthy target :80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="bealb" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#334155;" target="be2" value="Healthy target :80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="be1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#82B366;" target="atlas" value="MongoDB TLS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="be2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#82B366;" target="atlas" value="MongoDB TLS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;align=left;spacingLeft=14;" value="&lt;b&gt;Communication summary&lt;/b&gt;&lt;br&gt;1. Users reach the frontend ALB using its AWS DNS name.&lt;br&gt;2. The frontend ALB distributes requests across two React/Nginx instances.&lt;br&gt;3. The React application calls the backend ALB DNS name.&lt;br&gt;4. The backend ALB distributes API requests across two Nginx/Node.js instances.&lt;br&gt;5. Backend services read and write persistent data in MongoDB Atlas." vertex="1">
+          <mxGeometry height="105" width="1450" x="300" y="955" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
